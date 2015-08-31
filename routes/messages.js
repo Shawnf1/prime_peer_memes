@@ -5,38 +5,35 @@ var fs = require('fs');
 /* GET users listing. */
 router.post('/:id/:msg', function(req, res, next) {
     //console.log(req);
-    res.send('Woo!');
+    //res.send('Woo!');
 
+    var id = req.params.id;
     var msg = req.params.msg;
     var file = __dirname + '/../models/messages.json';
-    fs.writeFile(file, 'utf8', function (err, data) {
-
-    });
 
     fs.readFile(file, 'utf8', function (err, data) {
         if(err) {
             next(err);
         }else {
-            var obj = JSON.parse(data);
-            var memesArray = [];
-
-            if(!id) {
-                for(var i = 0; i < 5; i++) {
-                    memesArray[i] = obj[i];
-                }
+            if(data) {
+                var obj = JSON.parse(data);
             }else {
-                obj.forEach(function (elem) {
-                    if(elem.id == id) {
-                        memesArray = elem;
-                    }
-                });
+                var obj = [];
             }
-            //res.json(memesArray);
+            obj.push({"id": id, "msg": msg});
+
+            fs.writeFile(file, JSON.stringify(obj), function (err) {
+               if(err) {
+                   throw err;
+               } else
+               {
+                   res.send('Saved');
+               }
+            });
 
         }
-        console.log(memesArray);
-        res.render('memes', {title: "Memes", array: memesArray});
-    });
+
+        });
 
 
 });
