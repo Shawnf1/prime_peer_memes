@@ -1,0 +1,10 @@
+extends ./layout
+
+block content
+    h1= title
+
+        each meme in array
+            #meme(data-id=meme.id)
+            img(src='/images/'+ meme.id +'.jpg')
+            p= meme.meme
+
