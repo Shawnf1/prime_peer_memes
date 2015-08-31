@@ -4,7 +4,7 @@ var fs = require('fs');
 
 /* GET users listing. */
 router.get('/:id?', function(req, res, next) {
-  var id= req.params.id;
+  var id = req.params.id;
   var file = __dirname + '/../models/memes.json';
   fs.readFile(file, 'utf8', function (err, data) {
     if(err) {

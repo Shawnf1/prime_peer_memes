@@ -3,8 +3,14 @@ extends ./layout
 block content
     h1= title
 
-        each meme in array
-            #meme(data-id=meme.id)
-            img(src='/images/'+ meme.id +'.jpg')
-            p= meme.meme
+    each meme in array
+         #meme(data-id=meme.id)
+             form
+                fieldset
+                    p= meme.meme
+                    img(src='/images/'+ meme.id +'.jpg')
+                    br
+                    input.message(type="text")
+                    button.message New Message
+
 
