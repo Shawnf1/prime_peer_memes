@@ -27,7 +27,13 @@ router.post('/:id/:msg', function(req, res, next) {
                    throw err;
                } else
                {
-                   res.send('Saved');
+                   var finalMsgs = [];
+                   obj.forEach(function(elem) {
+                       if(elem.id == id) {
+                           finalMsgs.push(elem);
+                       }
+                   });
+                   res.send(finalMsgs);
                }
             });
 
@@ -35,6 +41,24 @@ router.post('/:id/:msg', function(req, res, next) {
 
         });
 
+
+});
+
+router.get('/:id', function (req, res, next) {
+    var id = req.params.id;
+
+    var file = __dirname + '/../models/messages.json';
+
+    fs.readFile(file, 'utf8', function (err, data) {
+       if(err) {
+           next(err);
+       } else {
+           if(data) {
+               var obj = JSON.parse(data);
+           };
+       }
+        res.send(obj);
+    });
 
 });
 

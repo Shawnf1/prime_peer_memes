@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/javascripts', express.static(__dirname + '/node_modules/jquery/dist/'));
+app.use('/javascripts', express.static(__dirname + '/node_modules/handlebars/dist/'));
 
 app.use('/', routes);
 app.use('/memes', memes);
