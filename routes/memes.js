@@ -24,14 +24,10 @@ router.get('/:id?', function(req, res, next) {
           }
         });
       }
-      //res.json(memesArray);
-
     }
     console.log(memesArray);
     res.render('memes', {title: "Memes", array: memesArray});
   });
-
-
 });
 
 module.exports = router;

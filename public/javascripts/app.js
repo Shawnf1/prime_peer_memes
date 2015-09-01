@@ -9,20 +9,13 @@ $(document).ready(function () {
     $('body').on('click', 'button.message', function (e) {
         e.preventDefault();
         var $parent = $(this).parent().parent().parent();
-        //postMessage($(this).parent().find('input.message').val());
         postMessage($parent.data('id'), $parent.find('input.message').val(), $parent.next());
-        $parent.find('input.message').val('');
-        //console.log($(this).parent().find('input.message').val());
+        $parent.find('input.message').val('')
     });
 
-    $('div.msg').each(function (index, elem) {
-        //console.log(elem);
+    $('div.msg').each(function (i, v) {
         getMessage($(this).data('id'), $(this));
     });
-    //console.log($('div.meme'));
-    //$('div.meme').each(function (index, elem) {
-    //   getMessage(elem.parent().attr('data-id'), elem);
-    //});
 });
 
 function postMessage(id, msg, elem) {

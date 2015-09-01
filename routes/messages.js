@@ -4,9 +4,6 @@ var fs = require('fs');
 
 /* GET users listing. */
 router.post('/:id/:msg', function(req, res, next) {
-    //console.log(req);
-    //res.send('Woo!');
-
     var id = req.params.id;
     var msg = req.params.msg;
     var file = __dirname + '/../models/messages.json';
@@ -46,20 +43,23 @@ router.post('/:id/:msg', function(req, res, next) {
 
 router.get('/:id', function (req, res, next) {
     var id = req.params.id;
-
+	console.log('received id', id);
     var file = __dirname + '/../models/messages.json';
 
     fs.readFile(file, 'utf8', function (err, data) {
        if(err) {
            next(err);
        } else {
-           if(data) {
-               var obj = JSON.parse(data);
-           };
+		   var obj = JSON.parse(data);
+		   var finalMsgs = [];
+		   obj.forEach(function(elem) {
+			   if(elem.id == id) {
+				   finalMsgs.push(elem);
+			   }
+		   });
+		   res.send(finalMsgs);
        }
-        res.send(obj);
     });
-
 });
 
 module.exports = router;
