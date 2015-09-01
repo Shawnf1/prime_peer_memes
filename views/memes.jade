@@ -1,16 +1,22 @@
 extends ./layout
 block content
-    h1= title
-    h3= subtitle
+    .container-fluid
+        .row.col-sm-6
+            h1= title
+            h3= subtitle
+        .row.col-sm-6
+            h1 Messages
+            h3 I guess you can try
     .container-fluid
         each meme in array
-            .row.col-sm-12
-                .meme.col-sm-5(data-id=meme.id)
+            .row.memeWrap.col-sm-12(data-id=meme.id)
+                .meme.col-sm-6
                     h2= meme.meme
                     .img(style="background-image: url(images/"+ meme.id +".jpg")
+                .msgWrap.col-sm-6
                     input.message(type="text" placeholder="Enter a message")
                     button.message New Message
-                .msg.col-sm-3(data-id=meme.id)
+                    .msg(data-id=meme.id)
     script#message-template(type="text/x-handlebars-template")
         {{#each this}}
         ul

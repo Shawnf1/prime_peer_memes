@@ -12,28 +12,27 @@ a {
 }
 
 h2 {
-    font-size: 28px;
+    font-size: 30px;
     display:block;
     position:absolute;
-    width:95.75%;
+    width:95.5%;
     top:-20px;
-    left:15px;
+    left:auto;
     z-index:2;
     text-align:center;
     background-color: rgba(0, 0, 0, .50);
 }
 
 .img {
-    background-size: 100%;
+    background-size: cover;
     width: auto;
     height: 500px;
     background-repeat: no-repeat;
-    display: cover;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 input {
-    margin: 5px;
+    margin: 10px;
 }
 
 h1 {
@@ -43,4 +42,9 @@ h1 {
 h3 {
     text-align:center;
     border-bottom: solid grey thin;
+}
+
+.row {
+    border-bottom: solid grey thin;
+    margin-bottom: 20px;
 }

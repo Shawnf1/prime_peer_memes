@@ -8,13 +8,13 @@ $(document).ready(function () {
 
     $('body').on('click', 'button.message', function (e) {
         e.preventDefault();
-        var $parent = $(this).parent().parent().parent();
-        postMessage($parent.data('id'), $parent.find('input.message').val(), $parent.next());
+        var $parent = $(this).parent().parent();
+        postMessage($parent.data('id'), $parent.find('input.message').val(), $parent.find('.msg'));
         $parent.find('input.message').val('')
     });
 
-    $('div.msg').each(function (i, v) {
-        getMessage($(this).data('id'), $(this));
+    $('div.memeWrap').each(function (i, v) {
+        getMessage($(this).data('id'), $(this).find('.msg'));
     });
 });
 
