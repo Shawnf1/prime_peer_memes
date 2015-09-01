@@ -26,7 +26,7 @@ router.get('/:id?', function(req, res, next) {
       }
     }
     console.log(memesArray);
-    res.render('memes', {title: "Memes", array: memesArray});
+    res.render('memes', {title: "Meme Hall of Fame", subtitle: "Don't try to dispute it", array: memesArray});
   });
 });
 

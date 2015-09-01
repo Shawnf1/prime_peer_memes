@@ -1,17 +1,15 @@
 extends ./layout
 block content
     h1= title
+    h3= subtitle
     .container-fluid
         each meme in array
             .row.col-sm-12
-                .meme.col-sm-7(data-id=meme.id)
-                    form
-                        fieldset
-                            h2= meme.meme
-                            img(src='/images/' + meme.id + '.jpg')
-                            br
-                            input.message(type="text")
-                            button.message New Message
+                .meme.col-sm-5(data-id=meme.id)
+                    h2= meme.meme
+                    .img(style="background-image: url(images/"+ meme.id +".jpg")
+                    input.message(type="text" placeholder="Enter a message")
+                    button.message New Message
                 .msg.col-sm-3(data-id=meme.id)
     script#message-template(type="text/x-handlebars-template")
         {{#each this}}
